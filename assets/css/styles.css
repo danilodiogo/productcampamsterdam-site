@@ -412,8 +412,10 @@ body.nav-open .nav-toggle span::after { transform: rotate(-45deg); top: 0; }
 .contact-form__hint { font-size: var(--fs-caption); color: var(--text-muted); }
 .contact-form__error { color: var(--error); font-size: var(--fs-caption); font-weight: var(--fw-medium); }
 .contact-form__honeypot { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
-.contact-form__success { padding: var(--s-5); background: #ECFDF3; border: 2px solid #027A48; color: #064E3B; border-radius: var(--radius-md); display: none; }
+.contact-form__success { padding: var(--s-5); background: #ECFDF3; border: 2px solid #027A48; color: #064E3B; border-radius: var(--radius-md); display: none; scroll-margin-top: calc(var(--nav-h) + var(--s-5)); }
 .contact-form__success.is-shown { display: block; animation: fade-up var(--dur-slow) var(--ease-out); }
+.contact-form__success strong { display: block; font-size: 1.125rem; margin-bottom: var(--s-2); }
+.contact-form__success p { color: #064E3B; }
 .contact-form__actions { display: flex; gap: var(--s-3); align-items: center; flex-wrap: wrap; }
 
 /* ---------- LIGHTBOX ---------- */
