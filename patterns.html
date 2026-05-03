@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Patterns — ProductCamp Amsterdam Design System</title>
+  <meta name="description" content="The component library powering the ProductCamp Amsterdam 2026 website. Tokens, typography, buttons, cards, motion, and accessibility annotations.">
+  <meta name="theme-color" content="#AA3D2F">
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/brand/favicon-32.png">
+  <link rel="apple-touch-icon" href="assets/brand/logo-icon-256.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" role="banner">
+    <div class="container">
+      <a class="brand-link" href="index.html" aria-label="ProductCamp Amsterdam home">
+        <img src="assets/brand/logo-wide.png" alt="ProductCamp Amsterdam" height="40">
+      </a>
+      <button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-primary"><span></span></button>
+      <nav class="nav-primary" id="nav-primary" aria-label="Primary">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="sponsors.html">Sponsors</a></li>
+          <li><a href="contact.html">Contact</a></li>          <li><a class="btn btn--primary" href="https://www.eventbrite.com/e/productcamp-amsterdam-2025-tickets-1278041660009" target="_blank" rel="noopener">Get Tickets</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section class="section">
+      <div class="container">
+        <span class="eyebrow">Storybook lite</span>
+        <h1>Patterns &amp; Components</h1>
+        <p class="lead" style="margin-top:var(--s-4)">Every UI element used across the site, with WCAG AAA contrast badges and copy-paste class names. Source of truth: <code>assets/css/tokens.css</code> + <code>assets/css/styles.css</code>.</p>
+      </div>
+    </section>
+
+    <!-- COLOURS -->
+    <section class="section section--bg">
+      <div class="container">
+        <h2>Colour</h2>
+        <p style="margin-top:var(--s-3); max-width:65ch">Brand red <code>#AA3D2F</code> and brand green <code>#8EAB30</code> are <strong>display-only</strong> on body text — they fail AAA at 5.5:1 and 3.1:1. We use <code>#7C2A1F</code> (red, 9:1) and <code>#4D6118</code> (green, 7.5:1) for any text under 24 px.</p>
+        <div class="grid grid--4" style="margin-top:var(--s-6)">
+          <div class="swatch swatch--dark" style="background:#AA3D2F">
+            <span class="swatch__contrast contrast-aa">AA · 5.5:1</span>
+            <div>
+              <div class="swatch__hex">#AA3D2F</div>
+              <div class="swatch__name">Brand Red — display</div>
+            </div>
+          </div>
+          <div class="swatch swatch--dark" style="background:#7C2A1F">
+            <span class="swatch__contrast contrast-aaa">AAA · 9.0:1</span>
+            <div>
+              <div class="swatch__hex">#7C2A1F</div>
+              <div class="swatch__name">Red — text & CTA</div>
+            </div>
+          </div>
+          <div class="swatch" style="background:#8EAB30; color:#111">
+            <span class="swatch__contrast contrast-fail">Fail · 3.1:1</span>
+            <div>
+              <div class="swatch__hex">#8EAB30</div>
+              <div class="swatch__name">Brand Green — fill only</div>
+            </div>
+          </div>
+          <div class="swatch swatch--dark" style="background:#4D6118">
+            <span class="swatch__contrast contrast-aaa">AAA · 7.5:1</span>
+            <div>
+              <div class="swatch__hex">#4D6118</div>
+              <div class="swatch__name">Green — text accent</div>
+            </div>
+          </div>
+          <div class="swatch swatch--dark" style="background:#282C33">
+            <span class="swatch__contrast contrast-aaa">AAA · 14.2:1</span>
+            <div>
+              <div class="swatch__hex">#282C33</div>
+              <div class="swatch__name">Slate — wordmark, footer</div>
+            </div>
+          </div>
+          <div class="swatch swatch--dark" style="background:#111">
+            <span class="swatch__contrast contrast-aaa">AAA · 19:1</span>
+            <div>
+              <div class="swatch__hex">#111111</div>
+              <div class="swatch__name">Body text</div>
+            </div>
+          </div>
+          <div class="swatch swatch--dark" style="background:#3F3F46">
+            <span class="swatch__contrast contrast-aaa">AAA · 11:1</span>
+            <div>
+              <div class="swatch__hex">#3F3F46</div>
+              <div class="swatch__name">Secondary text</div>
+            </div>
+          </div>
+          <div class="swatch swatch--dark" style="background:#52525B">
+            <span class="swatch__contrast contrast-aaa">AAA · 7.4:1</span>
+            <div>
+              <div class="swatch__hex">#52525B</div>
+              <div class="swatch__name">Muted text</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TYPOGRAPHY -->
+    <section class="section">
+      <div class="container">
+        <h2>Typography</h2>
+        <p style="margin-top:var(--s-3)">Headings: <code>Rubik 700</code>. Body: system stack. Sizes are fluid via <code>clamp()</code>.</p>
+        <div style="margin-top:var(--s-5); border-top:1px solid var(--border)">
+          <div class="type-spec"><h1 style="font-size:var(--fs-display)">Display 64</h1><code>--fs-display · clamp(2.5rem, 1.6rem + 4.5vw, 4rem)</code></div>
+          <div class="type-spec"><h2 style="font-size:var(--fs-h1)">Heading 1 — 48</h2><code>--fs-h1</code></div>
+          <div class="type-spec"><h2 style="font-size:var(--fs-h2)">Heading 2 — 36</h2><code>--fs-h2</code></div>
+          <div class="type-spec"><h3 style="font-size:var(--fs-h3)">Heading 3 — 24</h3><code>--fs-h3</code></div>
+          <div class="type-spec"><h4 style="font-size:var(--fs-h4)">Heading 4 — 18</h4><code>--fs-h4</code></div>
+          <div class="type-spec"><p style="font-size:var(--fs-body)">Body 18 — the long-form reading size, line-height 1.55.</p><code>--fs-body</code></div>
+          <div class="type-spec"><p style="font-size:var(--fs-small)">Small 16 — meta, secondary copy.</p><code>--fs-small</code></div>
+          <div class="type-spec"><p style="font-size:var(--fs-caption)">Caption 14 — labels, captions, footers.</p><code>--fs-caption</code></div>
+          <div class="type-spec"><span class="eyebrow">Eyebrow label</span><code>.eyebrow</code></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BUTTONS -->
+    <section class="section section--bg">
+      <div class="container">
+        <h2>Buttons</h2>
+        <p style="margin-top:var(--s-3)">Minimum 44 × 44 px touch target. Hover scales 1.02 + lifts shadow. Active scales 0.98. Focus shows 3 px AAA-red ring with 2 px offset.</p>
+        <div class="cluster" style="margin-top:var(--s-5); align-items:flex-start; flex-wrap:wrap; gap:var(--s-4)">
+          <button class="btn btn--primary">Primary</button>
+          <button class="btn btn--primary btn--lg">Primary large</button>
+          <button class="btn btn--secondary">Secondary</button>
+          <button class="btn btn--secondary btn--lg">Secondary large</button>
+          <button class="btn btn--ghost">Ghost</button>
+          <button class="btn btn--primary" disabled>Disabled</button>
+        </div>
+        <pre class="code-snippet" style="margin-top:var(--s-5)">&lt;a class="btn btn--primary" href="..."&gt;Get Tickets&lt;/a&gt;</pre>
+      </div>
+    </section>
+
+    <!-- CARDS -->
+    <section class="section">
+      <div class="container">
+        <h2>Cards</h2>
+        <div class="grid grid--3" style="margin-top:var(--s-5)">
+          <article class="card card--media">
+            <img src="assets/img/team-danilo.jpeg" alt="Portrait of Danilo.">
+            <div class="card__body">
+              <h3 class="card__title">Team card</h3>
+              <div class="card__role">Senior Product Manager</div>
+              <p class="card__bio">Hover to see the lift + image zoom motion (240ms).</p>
+            </div>
+          </article>
+          <article class="persona">
+            <div class="persona__icon"><img src="assets/brand/logo-icon-256.png" alt=""></div>
+            <h3>Persona card</h3>
+            <p>Used on the home page for audience segments.</p>
+          </article>
+          <article class="tier">
+            <div class="tier__name">Tier card</div>
+            <div class="tier__price">€1,000<small>excl. VAT</small></div>
+            <ul class="tier__features">
+              <li>Feature one</li>
+              <li>Feature two</li>
+              <li>Feature three</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- STAT COUNTERS -->
+    <section class="section section--bg">
+      <div class="container">
+        <h2>Stat counters</h2>
+        <p style="margin-top:var(--s-3)">Count up from 0 over 1.2s ease-out when first in viewport. Replay below.</p>
+        <div class="grid grid--3" id="stat-demo" style="margin-top:var(--s-5)">
+          <div class="stat"><div class="stat__num"><span data-count="100">0</span><span data-suffix="+"></span></div><div class="stat__label">attendees</div></div>
+          <div class="stat"><div class="stat__num"><span data-count="900">0</span><span data-suffix="+"></span></div><div class="stat__label">subscribers</div></div>
+          <div class="stat"><div class="stat__num"><span data-count="14">0</span></div><div class="stat__label">editions</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MOTION DEMOS -->
+    <section class="section">
+      <div class="container">
+        <h2>Motion choreography</h2>
+        <p style="margin-top:var(--s-3); max-width:65ch">All motion respects <code>prefers-reduced-motion: reduce</code>. With reduce on, every animation collapses to a 200 ms opacity fade — no translate, scale, or rotate.</p>
+
+        <div class="grid grid--2" style="margin-top:var(--s-6)">
+          <div class="card" style="padding:var(--s-6)">
+            <h3>Section reveal</h3>
+            <p style="margin-top:var(--s-3)">Fade-up 24 px, 600 ms <code>cubic-bezier(0.22, 1, 0.36, 1)</code>, triggered at 25 % in viewport. Children stagger 80 ms.</p>
+            <div id="reveal-target" data-reveal class="card" style="margin-top:var(--s-5); padding:var(--s-4); background:var(--bg-muted)">Sample reveal block</div>
+            <button class="btn btn--secondary" data-replay="#reveal-target" style="margin-top:var(--s-4)">Replay reveal</button>
+          </div>
+
+          <div class="card" style="padding:var(--s-6)">
+            <h3>Hero parallax</h3>
+            <p style="margin-top:var(--s-3)">Hero image translates -40 px on scroll using Motion One's <code>scroll()</code>. Gear graphic rotates 360° in 60 s linear infinite via CSS.</p>
+            <div style="margin-top:var(--s-5); display:flex; gap:var(--s-4); align-items:center">
+              <div style="position:relative; width:80px; height:80px; opacity:0.6">
+                <img src="assets/brand/logo-icon-256.png" alt="" style="width:100%; height:100%; animation:spin 60s linear infinite">
+              </div>
+              <code>animation: spin 60s linear infinite</code>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FORMS -->
+    <section class="section section--bg">
+      <div class="container">
+        <h2>Form fields</h2>
+        <div class="grid grid--2" style="margin-top:var(--s-5); max-width:760px">
+          <div class="field"><label for="demo-name">Name</label><input id="demo-name" type="text" placeholder="Jane Doe"></div>
+          <div class="field"><label for="demo-email">Email</label><input id="demo-email" type="email" placeholder="jane@example.com"></div>
+          <div class="field"><label for="demo-err">Error state</label><input id="demo-err" type="text" aria-invalid="true" aria-describedby="demo-err-msg" value="invalid"><span id="demo-err-msg" style="color:var(--error); font-size:var(--fs-caption)">Please enter a valid value.</span></div>
+          <div class="field"><label for="demo-textarea">Message</label><textarea id="demo-textarea" rows="4" placeholder="Your message…"></textarea></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- A11Y NOTES -->
+    <section class="section">
+      <div class="container">
+        <h2>Accessibility annotations</h2>
+        <ul class="stack" style="list-style:disc; padding-left:var(--s-5); margin-top:var(--s-5); color:var(--text-secondary)">
+          <li>Skip-to-content link is the first focusable element on every page.</li>
+          <li>One <code>&lt;h1&gt;</code> per page; heading levels never skip.</li>
+          <li>Every <code>&lt;img&gt;</code> has <code>alt</code> (decorative ones use <code>alt=""</code> and <code>aria-hidden="true"</code>).</li>
+          <li>All interactive elements ≥ 44 × 44 px touch target.</li>
+          <li><code>:focus-visible</code> always shows a 3 px <code>#7C2A1F</code> ring with 2 px offset.</li>
+          <li><code>prefers-reduced-motion</code> collapses every animation to opacity-only.</li>
+          <li>Layout intact at 200 % zoom and at 320 px viewport width.</li>
+          <li>Site readable and navigable with JavaScript disabled.</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- SUBSTACK SUBSCRIBE (sync across pages) -->
+  <section class="substack-subscribe" aria-label="Subscribe to our newsletter">
+    <div class="container substack-subscribe__inner">
+      <div>
+        <span class="eyebrow">Stay in the loop</span>
+        <h2>Get ProductCamp updates in your inbox.</h2>
+        <p>Speaker announcements, ticket drops, sponsor news, and the occasional product-management essay from the community.</p>
+      </div>
+      <iframe src="https://productcampamsterdam.substack.com/embed"
+              title="Subscribe to ProductCamp Amsterdam Substack"
+              loading="lazy"
+              style="width:100%; height:200px; max-width:480px; border:1px solid var(--border); border-radius:var(--radius-md); background:var(--white);"
+              frameborder="0" scrolling="no"></iframe>
+    </div>
+  </section>
+
+  <!-- FOOTER (sync across pages) -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="site-footer__top">
+        <div class="site-footer__brand">
+          <img src="assets/brand/logo-wide.png" alt="ProductCamp Amsterdam" height="44">
+          <p>The Netherlands' longest-running product unconference. Volunteer-organised since 2013.</p>
+          <ul class="social-links">
+            <li><a href="https://www.facebook.com/ProductCampAmsterdam/" target="_blank" rel="noopener" aria-label="Facebook (opens in new tab)">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a></li>
+            <li><a href="https://instagram.com/productcampamsterdam" target="_blank" rel="noopener" aria-label="Instagram (opens in new tab)">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </a></li>
+            <li><a href="https://twitter.com/pcampamsterdam" target="_blank" rel="noopener" aria-label="X / Twitter (opens in new tab)">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a></li>
+            <li><a href="https://flickr.com/people/productcampamsterdam" target="_blank" rel="noopener" aria-label="Flickr (opens in new tab)">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.334 6.666C2.388 6.666 0 9.054 0 12s2.388 5.334 5.334 5.334S10.667 14.946 10.667 12 8.279 6.666 5.334 6.666zM18.667 6.666C15.721 6.666 13.333 9.054 13.333 12s2.388 5.334 5.334 5.334C21.612 17.334 24 14.946 24 12s-2.388-5.334-5.333-5.334z"/></svg>
+            </a></li>
+          </ul>
+        </div>
+        <nav class="site-footer__nav" aria-label="Footer">
+          <h3>Event</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="sponsors.html">Sponsors</a></li>
+            <li><a href="https://productcampamsterdam.substack.com/" target="_blank" rel="noopener">Substack</a></li>
+          </ul>
+        </nav>
+        <nav class="site-footer__nav" aria-label="Tickets">
+          <h3>Join</h3>
+          <ul>
+            <li><a href="https://www.eventbrite.com/e/productcamp-amsterdam-2025-tickets-1278041660009" target="_blank" rel="noopener">Get Tickets</a></li>
+            <li><a href="contact.html?topic=sponsorship">Sponsor enquiry</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="site-footer__bottom">
+        <span>© Stichting ProductCamp Amsterdam. All rights reserved.</span>
+        <span>14th Edition · October 2026 · Amsterdam</span>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="assets/js/main.js"></script>
+</body>
+</html>

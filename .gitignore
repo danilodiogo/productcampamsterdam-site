@@ -1,0 +1,19 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Local dev / preview
+node_modules/
+.cache/
+
+# Internal-only files we don't want shipping (see _includes-nav.html for nav source-of-truth pattern)
+_includes-nav.html
+assets/img/manifest.json

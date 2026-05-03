@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /patterns.html
+
+Sitemap: https://productcampamsterdam.org/sitemap.xml

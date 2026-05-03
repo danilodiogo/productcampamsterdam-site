@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact — ProductCamp Amsterdam</title>
+  <meta name="description" content="Get in touch with the ProductCamp Amsterdam organising committee — sponsorship enquiries, accessibility questions, volunteering, press.">
+  <meta name="theme-color" content="#AA3D2F">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/brand/favicon-32.png">
+  <link rel="apple-touch-icon" href="assets/brand/logo-icon-256.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <!-- NAV (sync across pages) -->
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" role="banner">
+    <div class="container">
+      <a class="brand-link" href="index.html" aria-label="ProductCamp Amsterdam home">
+        <img src="assets/brand/logo-wide.png" alt="ProductCamp Amsterdam" height="40">
+      </a>
+      <button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-primary"><span></span></button>
+      <nav class="nav-primary" id="nav-primary" aria-label="Primary">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="sponsors.html">Sponsors</a></li>
+          <li><a href="contact.html" aria-current="page">Contact</a></li>
+          <li><a class="btn btn--primary" href="https://www.eventbrite.com/e/productcamp-amsterdam-2025-tickets-1278041660009" target="_blank" rel="noopener">Get Tickets</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- HERO -->
+    <section class="section">
+      <div class="container" style="max-width:720px; margin-inline:auto">
+        <div data-reveal class="center">
+          <span class="eyebrow">Contact</span>
+          <h1>Tell us what you need.</h1>
+          <p class="lead center-x" style="margin-top:var(--s-4)">We read every message. Sponsorship, accessibility, press, volunteering — pick a topic, write a few lines, and we'll reply within two working days.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FORM -->
+    <section class="section section--bg" data-reveal>
+      <div class="container">
+
+        <!-- Success state (shown by JS on submit success) -->
+        <div id="contact-success" class="contact-form__success" role="status" aria-live="polite">
+          <strong>Thanks — message received.</strong>
+          <p style="margin-top:var(--s-2)">We'll be back in touch within two working days. If it's urgent, mention it in the subject line on your reply.</p>
+        </div>
+
+        <!--
+          Form provider: Web3Forms (https://web3forms.com)
+          The recipient email is configured server-side via the access_key —
+          your address never appears in this HTML. Submissions are forwarded
+          to whichever inbox you registered the key against.
+
+          ONE-TIME SETUP:
+            1. Visit https://web3forms.com
+            2. Enter the address you want submissions forwarded to
+            3. Copy the generated access_key (looks like a UUID)
+            4. Paste it into the value="…" of the hidden field below
+        -->
+        <form id="contact-form" class="contact-form"
+              action="https://api.web3forms.com/submit"
+              method="POST"
+              novalidate>
+          <!-- ===== REPLACE THIS ACCESS KEY (one-time, before deploy) ===== -->
+          <input type="hidden" name="access_key" value="72be311d-a82a-4ad4-bda7-ecad6673eab9">
+          <!-- ============================================================= -->
+          <input type="hidden" name="subject" value="ProductCamp Amsterdam — contact form">
+          <input type="hidden" name="from_name" value="ProductCamp Amsterdam website">
+          <input type="hidden" name="redirect" value="false">
+
+          <!-- Honeypot (invisible to humans, bots fill it in) -->
+          <div class="contact-form__honeypot" aria-hidden="true">
+            <label for="hp_field">Leave this empty</label>
+            <input type="text" name="botcheck" id="hp_field" tabindex="-1" autocomplete="off">
+          </div>
+
+          <div class="contact-form__row">
+            <div class="field">
+              <label for="cf-name">Name <span class="req" aria-hidden="true">*</span></label>
+              <input id="cf-name" name="name" type="text" autocomplete="name" required aria-required="true">
+            </div>
+            <div class="field">
+              <label for="cf-email">Email <span class="req" aria-hidden="true">*</span></label>
+              <input id="cf-email" name="email" type="email" autocomplete="email" required aria-required="true">
+            </div>
+          </div>
+
+          <div class="contact-form__row">
+            <div class="field">
+              <label for="cf-org">Organisation</label>
+              <input id="cf-org" name="organisation" type="text" autocomplete="organization">
+            </div>
+            <div class="field">
+              <label for="cf-topic">Topic <span class="req" aria-hidden="true">*</span></label>
+              <select id="cf-topic" name="topic" required aria-required="true">
+                <option value="">Choose one…</option>
+                <option value="sponsorship">Sponsorship</option>
+                <option value="accessibility">Accessibility &amp; dietary</option>
+                <option value="volunteering">Volunteering</option>
+                <option value="speaking">Speaking &amp; sessions</option>
+                <option value="press">Press</option>
+                <option value="general">General question</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="cf-message">Message <span class="req" aria-hidden="true">*</span></label>
+            <textarea id="cf-message" name="message" rows="6" required aria-required="true" aria-describedby="cf-message-hint"></textarea>
+            <span id="cf-message-hint" class="contact-form__hint">A few lines is fine. Mention deadlines, budget, or anything else useful.</span>
+          </div>
+
+          <div class="field">
+            <label style="display:flex; gap:var(--s-3); align-items:flex-start; cursor:pointer; font-weight:var(--fw-regular); font-size:var(--fs-small);">
+              <input type="checkbox" name="consent" required aria-required="true" style="min-width:auto; min-height:auto; width:18px; height:18px; margin-top:2px;">
+              <span>I agree my message will be sent to the ProductCamp Amsterdam organisers and may be retained for follow-up. <span class="req" aria-hidden="true">*</span></span>
+            </label>
+          </div>
+
+          <div class="contact-form__actions">
+            <button type="submit" class="btn btn--primary btn--lg">Send it</button>
+            <span class="contact-form__hint">We reply within two working days.</span>
+          </div>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- SUBSTACK SUBSCRIBE (sync across pages) -->
+  <section class="substack-subscribe" aria-label="Subscribe to our newsletter">
+    <div class="container substack-subscribe__inner">
+      <div>
+        <span class="eyebrow">Stay in the loop</span>
+        <h2>Get ProductCamp updates in your inbox.</h2>
+        <p>Speaker announcements, ticket drops, sponsor news, and the occasional product-management essay from the community.</p>
+      </div>
+      <iframe src="https://productcampamsterdam.substack.com/embed"
+              title="Subscribe to ProductCamp Amsterdam Substack"
+              loading="lazy"
+              style="width:100%; height:200px; max-width:480px; border:1px solid var(--border); border-radius:var(--radius-md); background:var(--white);"
+              frameborder="0" scrolling="no"></iframe>
+    </div>
+  </section>
+
+  <!-- FOOTER (sync across pages) -->
+  <footer class="site-footer" id="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="site-footer__top">
+        <div class="site-footer__brand">
+          <img src="assets/brand/logo-wide.png" alt="ProductCamp Amsterdam" height="44">
+          <p>The Netherlands' longest-running product unconference. Volunteer-organised since 2013.</p>
+          <ul class="social-links">
+            <li><a href="https://www.facebook.com/ProductCampAmsterdam/" target="_blank" rel="noopener" aria-label="Facebook (opens in new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a></li>
+            <li><a href="https://instagram.com/productcampamsterdam" target="_blank" rel="noopener" aria-label="Instagram (opens in new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a></li>
+            <li><a href="https://twitter.com/pcampamsterdam" target="_blank" rel="noopener" aria-label="X / Twitter (opens in new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a></li>
+            <li><a href="https://flickr.com/people/productcampamsterdam" target="_blank" rel="noopener" aria-label="Flickr (opens in new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.334 6.666C2.388 6.666 0 9.054 0 12s2.388 5.334 5.334 5.334S10.667 14.946 10.667 12 8.279 6.666 5.334 6.666zM18.667 6.666C15.721 6.666 13.333 9.054 13.333 12s2.388 5.334 5.334 5.334C21.612 17.334 24 14.946 24 12s-2.388-5.334-5.333-5.334z"/></svg></a></li>
+          </ul>
+        </div>
+        <nav class="site-footer__nav" aria-label="Footer">
+          <h3>Event</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="sponsors.html">Sponsors</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="https://productcampamsterdam.substack.com/" target="_blank" rel="noopener">Substack</a></li>
+          </ul>
+        </nav>
+        <nav class="site-footer__nav" aria-label="Tickets">
+          <h3>Join</h3>
+          <ul>
+            <li><a href="https://www.eventbrite.com/e/productcamp-amsterdam-2025-tickets-1278041660009" target="_blank" rel="noopener">Get Tickets</a></li>
+            <li><a href="contact.html?topic=sponsorship">Sponsor enquiry</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="site-footer__bottom">
+        <span>© Stichting ProductCamp Amsterdam. All rights reserved.</span>
+        <span>14th Edition · October 2026 · Amsterdam</span>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="assets/js/main.js"></script>
+</body>
+</html>

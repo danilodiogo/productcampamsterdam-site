@@ -1,0 +1,146 @@
+/* ============================================================
+   ProductCamp Amsterdam — Design Tokens
+   Source: DESIGN.md + plan AAA-darkened variants
+   ============================================================ */
+
+:root {
+  /* ---------- COLOUR ---------- */
+  /* Brand (decorative / large headings only) */
+  --brand-red: #AA3D2F;          /* AA on white for ≥24px bold; never on body text */
+  --brand-green: #8EAB30;        /* Decorative fills only — fails contrast for text */
+  --brand-slate: #282C33;        /* Wordmark dark */
+
+  /* AAA-safe variants */
+  --aaa-red: #7C2A1F;            /* 9.0:1 on white — body links, button bg, focus ring */
+  --aaa-red-darker: #5E1F17;     /* hover/active for buttons */
+  --aaa-green: #4D6118;          /* 7.5:1 on white — green text accents */
+
+  /* Neutrals */
+  --white: #FFFFFF;
+  --neutral-50:  #FAFAFA;
+  --neutral-100: #F4F4F5;
+  --neutral-200: #E4E4E7;
+  --neutral-300: #D4D4D8;
+  --neutral-400: #A1A1AA;
+  --neutral-500: #71717A;
+  --neutral-600: #52525B;
+  --neutral-700: #3F3F46;
+  --neutral-800: #27272A;
+  --neutral-900: #18181B;
+  --black: #111111;
+
+  /* Semantic */
+  --bg: var(--white);
+  --bg-subtle: var(--neutral-50);
+  --bg-muted: var(--neutral-100);
+  --bg-inverse: var(--brand-slate);
+
+  --text: var(--black);                 /* 19:1 on white */
+  --text-secondary: var(--neutral-700); /* 11:1 on white */
+  --text-muted: var(--neutral-600);     /* 7.4:1 on white */
+  --text-inverse: var(--white);
+  --text-link: var(--aaa-red);
+  --text-link-hover: var(--aaa-red-darker);
+  --text-accent-green: var(--aaa-green);
+  --text-accent-red: var(--brand-red);  /* only on ≥24px bold */
+
+  --border: var(--neutral-200);
+  --border-strong: var(--neutral-400);
+
+  --focus: var(--aaa-red);
+
+  /* Scrim overlays */
+  --scrim-warm: rgba(40, 24, 20, 0.55);
+  --scrim-cool: rgba(20, 24, 28, 0.55);
+
+  /* System */
+  --success: #027A48;
+  --error: #B42318;
+
+  /* ---------- TYPOGRAPHY ---------- */
+  --font-heading: "Rubik", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  --font-body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+
+  /* Fluid type — clamp(min, preferred, max) */
+  --fs-display: clamp(2.5rem, 1.6rem + 4.5vw, 4rem);     /* 40 → 64 */
+  --fs-h1:      clamp(2rem, 1.4rem + 3vw, 3rem);         /* 32 → 48 */
+  --fs-h2:      clamp(1.625rem, 1.2rem + 2vw, 2.25rem);  /* 26 → 36 */
+  --fs-h3:      clamp(1.25rem, 1rem + 1vw, 1.5rem);      /* 20 → 24 */
+  --fs-h4:      1.125rem;                                /* 18 */
+  --fs-body:    1.125rem;                                /* 18 — AAA-friendly */
+  --fs-small:   1rem;                                    /* 16 */
+  --fs-caption: 0.875rem;                                /* 14 */
+  --fs-eyebrow: 0.875rem;
+
+  --lh-tight: 1.1;
+  --lh-snug: 1.25;
+  --lh-normal: 1.55;
+  --lh-loose: 1.75;
+
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-bold: 700;
+
+  --tracking-eyebrow: 0.06em;
+  --tracking-tight: -0.01em;
+
+  /* ---------- SPACING (4px scale) ---------- */
+  --s-0: 0;
+  --s-1: 0.25rem;   /* 4 */
+  --s-2: 0.5rem;    /* 8 */
+  --s-3: 0.75rem;   /* 12 */
+  --s-4: 1rem;      /* 16 */
+  --s-5: 1.5rem;    /* 24 */
+  --s-6: 2rem;      /* 32 */
+  --s-7: 3rem;      /* 48 */
+  --s-8: 4rem;      /* 64 */
+  --s-9: 6rem;      /* 96 */
+  --s-10: 8rem;     /* 128 */
+
+  /* ---------- LAYOUT ---------- */
+  --container-max: 1280px;
+  --container-pad: var(--s-5);
+  --section-pad-y: clamp(3rem, 6vw, 6rem);
+  --nav-h: 4.5rem;       /* 72px */
+
+  /* ---------- RADII ---------- */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 9px;     /* matches Webflow buttons */
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-pill: 999px;
+
+  /* ---------- SHADOW (5 elevations) ---------- */
+  --elev-0: none;
+  --elev-1: 0 1px 2px rgba(17, 17, 17, 0.04), 0 1px 3px rgba(17, 17, 17, 0.06);
+  --elev-2: 0 4px 8px rgba(17, 17, 17, 0.05), 0 2px 4px rgba(17, 17, 17, 0.05);
+  --elev-3: 0 10px 24px rgba(17, 17, 17, 0.08), 0 4px 8px rgba(17, 17, 17, 0.05);
+  --elev-4: 0 24px 48px rgba(17, 17, 17, 0.12), 0 8px 16px rgba(17, 17, 17, 0.06);
+
+  /* ---------- MOTION ---------- */
+  --dur-fast: 160ms;
+  --dur-base: 240ms;
+  --dur-slow: 600ms;
+  --dur-slowest: 1200ms;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);     /* preferred reveal easing */
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-linear: linear;
+
+  /* ---------- Z-INDEX ---------- */
+  --z-base: 0;
+  --z-content: 1;
+  --z-sticky: 100;
+  --z-nav: 200;
+  --z-overlay: 800;
+  --z-modal: 900;
+  --z-toast: 1000;
+}
+
+/* ---------- BREAKPOINTS (reference; use @media in CSS directly) ----------
+   --bp-sm: 480px
+   --bp-md: 768px   tablet
+   --bp-lg: 992px   desktop
+   --bp-xl: 1280px  wide
+*/
