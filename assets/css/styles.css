@@ -361,7 +361,7 @@ body.nav-open .nav-toggle span::after { transform: rotate(-45deg); top: 0; }
 /* ---------- FAQ ACCORDION (rich) ----------
    Numbered counter, gradient left rail on open, animated chevron, soft hover lift.
 */
-.faq { display: grid; grid-template-columns: 1fr; gap: var(--s-3); max-width: 880px; margin-inline: auto; counter-reset: faq; }
+.faq { display: grid; grid-template-columns: 1fr; gap: var(--s-3); max-width: 880px; margin-inline: auto; counter-reset: faq; align-items: start; }
 @media (min-width: 768px) { .faq { grid-template-columns: 1fr 1fr; gap: var(--s-3) var(--s-5); } }
 .faq__item { counter-increment: faq; background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); position: relative; overflow: hidden; transition: border-color var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out); }
 .faq__item::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: linear-gradient(180deg, var(--aaa-red), var(--aaa-green)); transform: scaleY(0); transform-origin: top; transition: transform var(--dur-base) var(--ease-out); }
