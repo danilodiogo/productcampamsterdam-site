@@ -43,7 +43,7 @@
         <div data-reveal class="center">
           <span class="eyebrow">Contact</span>
           <h1>Tell us what you need.</h1>
-          <p class="lead center-x" style="margin-top:var(--s-4)">We read every message. Sponsorship, accessibility, press, volunteering — pick a topic, write a few lines, and we'll reply within two working days.</p>
+          <p class="lead center-x" style="margin-top:var(--s-4)">We read every message. Sponsorship, accessibility, press, volunteering — pick a topic, write a few lines.</p>
         </div>
       </div>
     </section>
@@ -55,7 +55,7 @@
         <!-- Success state (shown by JS on submit success) -->
         <div id="contact-success" class="contact-form__success" role="status" aria-live="polite">
           <strong>Thanks — message received.</strong>
-          <p style="margin-top:var(--s-2)">We'll be back in touch within two working days. If it's urgent, mention it in the subject line on your reply.</p>
+          <p style="margin-top:var(--s-2)">We'll be back in touch as soon as we can. If it's urgent, mention it in the subject line on your reply.</p>
         </div>
 
         <!--
@@ -98,23 +98,17 @@
             </div>
           </div>
 
-          <div class="contact-form__row">
-            <div class="field">
-              <label for="cf-org">Organisation</label>
-              <input id="cf-org" name="organisation" type="text" autocomplete="organization">
-            </div>
-            <div class="field">
-              <label for="cf-topic">Topic <span class="req" aria-hidden="true">*</span></label>
-              <select id="cf-topic" name="topic" required aria-required="true">
-                <option value="">Choose one…</option>
-                <option value="sponsorship">Sponsorship</option>
-                <option value="accessibility">Accessibility &amp; dietary</option>
-                <option value="volunteering">Volunteering</option>
-                <option value="speaking">Speaking &amp; sessions</option>
-                <option value="press">Press</option>
-                <option value="general">General question</option>
-              </select>
-            </div>
+          <div class="field">
+            <label for="cf-topic">Topic <span class="req" aria-hidden="true">*</span></label>
+            <select id="cf-topic" name="topic" required aria-required="true">
+              <option value="">Choose one…</option>
+              <option value="sponsorship">Sponsorship</option>
+              <option value="accessibility">Accessibility &amp; dietary</option>
+              <option value="volunteering">Volunteering</option>
+              <option value="speaking">Speaking &amp; sessions</option>
+              <option value="press">Press</option>
+              <option value="general">General question</option>
+            </select>
           </div>
 
           <div class="field">
@@ -132,7 +126,6 @@
 
           <div class="contact-form__actions">
             <button type="submit" class="btn btn--primary btn--lg">Send it</button>
-            <span class="contact-form__hint">We reply within two working days.</span>
           </div>
         </form>
       </div>

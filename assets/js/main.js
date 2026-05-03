@@ -295,6 +295,11 @@ function initContactForm() {
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
+    // Manual validation (form has `novalidate` to suppress default styling)
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
     const fd = new FormData(form);
     const submitBtn = form.querySelector('button[type="submit"]');
     const originalLabel = submitBtn.textContent;
