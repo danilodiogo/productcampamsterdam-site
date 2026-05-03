@@ -92,8 +92,11 @@ Upload the contents of `site/` to your static host. The `CNAME` file is GitHub-P
 - [ ] Eventbrite link opens in new tab
 - [ ] Sponsor `mailto:` opens with correct subject
 
-## License & credits
+## Credits & rights
 
-Site code: MIT.
-Photos: courtesy of ProductCamp Amsterdam (event photography from 2024 editions).
-Brand: © Stichting ProductCamp Amsterdam.
+© Stichting ProductCamp Amsterdam. All rights reserved.
+
+Photos: event photography from 2024 editions, used with attendee consent for promotional purposes.
+Brand and visual identity: © Stichting ProductCamp Amsterdam.
+
+This source is published for transparency and contributor convenience. It is not licensed for reuse, redistribution, or derivative works without written permission from the organising committee.
