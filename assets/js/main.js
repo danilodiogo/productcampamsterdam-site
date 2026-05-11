@@ -300,6 +300,21 @@ function initContactForm() {
       form.reportValidity();
       return;
     }
+    // Cloudflare Turnstile token check (if widget is on the page)
+    if (form.querySelector(".cf-turnstile")) {
+      const token = form.querySelector('input[name="cf-turnstile-response"]')?.value;
+      if (!token) {
+        let err = form.querySelector(".contact-form__error");
+        if (!err) {
+          err = document.createElement("div");
+          err.className = "contact-form__error";
+          err.setAttribute("role", "alert");
+          form.querySelector(".contact-form__actions").before(err);
+        }
+        err.textContent = "Please complete the anti-spam check before sending.";
+        return;
+      }
+    }
     const fd = new FormData(form);
     const submitBtn = form.querySelector('button[type="submit"]');
     const originalLabel = submitBtn.textContent;
@@ -329,6 +344,8 @@ function initContactForm() {
     } catch (err) {
       submitBtn.disabled = false;
       submitBtn.textContent = originalLabel;
+      // Reset Turnstile so user can re-attempt
+      if (window.turnstile) window.turnstile.reset();
       // Inline error
       let errEl = form.querySelector(".contact-form__error");
       if (!errEl) {
