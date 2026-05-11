@@ -2,6 +2,11 @@
 
 The 2026 edition's website. Pure HTML / CSS / JavaScript. Zero build step. Deployable to GitHub Pages, Netlify, S3, or any static host.
 
+## Live
+
+- **Current**: https://danilodiogo.github.io/productcampamsterdam-site/
+- **Custom domain (after DNS flip)**: https://productcampamsterdam.org
+
 ## Local preview
 
 ```bash
@@ -81,16 +86,16 @@ Upload the contents of `site/` to your static host. The `CNAME` file is GitHub-P
 
 ## Verification checklist
 
-- [ ] `python3 -m http.server` works locally and all pages render
-- [ ] No 404s in DevTools Network tab on any page
-- [ ] Tab through every page — focus visible at every step
-- [ ] Toggle `prefers-reduced-motion: reduce` in DevTools → animations collapse
-- [ ] Disable JavaScript → site still readable and navigable
-- [ ] Mobile (375 px), tablet (768 px), desktop (1280 px), wide (1920 px)
-- [ ] Lighthouse: Performance ≥ 95, Accessibility = 100, Best Practices ≥ 95, SEO = 100
-- [ ] axe DevTools: 0 violations
-- [ ] Eventbrite link opens in new tab
-- [ ] Sponsor `mailto:` opens with correct subject
+- [x] `python3 -m http.server` works locally and all pages render
+- [x] No 404s in DevTools Network tab on any page
+- [x] Tab through every page — focus visible at every step (verified by wcag-reviewer)
+- [x] Toggle `prefers-reduced-motion: reduce` in DevTools → animations collapse
+- [x] Disable JavaScript → site still readable and navigable (semantic HTML; content does not depend on JS)
+- [x] Mobile (375 px), tablet (768 px), desktop (1280 px), wide (1920 px)
+- [ ] Lighthouse: Performance ≥ 95, Accessibility = 100, Best Practices ≥ 95, SEO = 100 *(not yet run)*
+- [ ] axe DevTools: 0 violations *(not yet run automated; wcag-reviewer verified manually)*
+- [x] Eventbrite link opens in new tab
+- [x] Contact form posts to Web3Forms successfully (browser submit verified)
 
 ## Credits & rights
 
