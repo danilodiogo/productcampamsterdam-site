@@ -325,29 +325,10 @@ function initContactForm() {
     // Honeypot check (client-side)
     if (fd.get("botcheck")) { submitBtn.disabled = false; submitBtn.textContent = originalLabel; return; }
 
-    try {
-      const res = await fetch(form.action, {
-        method: "POST",
-        body: fd,
-        headers: { Accept: "application/json" }
-      });
-      const ok = res.ok;
-      if (ok) {
-        form.style.display = "none";
-        if (success) {
-          success.classList.add("is-shown");
-          success.scrollIntoView({ behavior: REDUCED ? "auto" : "smooth", block: "start" });
-          success.focus?.();
-        }
-      } else {
-        throw new Error(`HTTP ${res.status}`);
-      }
-    } catch (err) {
+    const showError = (msg) => {
       submitBtn.disabled = false;
       submitBtn.textContent = originalLabel;
-      // Reset hCaptcha so user can re-attempt
       if (window.hcaptcha) window.hcaptcha.reset();
-      // Inline error
       let errEl = form.querySelector(".contact-form__error");
       if (!errEl) {
         errEl = document.createElement("div");
@@ -355,7 +336,33 @@ function initContactForm() {
         errEl.setAttribute("role", "alert");
         form.appendChild(errEl);
       }
-      errEl.textContent = "Something went wrong sending your message. Please try again, or DM us on LinkedIn.";
+      errEl.textContent = msg;
+    };
+
+    try {
+      const res = await fetch(form.action, {
+        method: "POST",
+        body: fd,
+        headers: { Accept: "application/json" }
+      });
+      let data = null;
+      try { data = await res.json(); } catch (_) { /* non-JSON */ }
+      // Web3Forms returns {success: true/false, message: "..."} even on 200
+      if (res.ok && data && data.success) {
+        form.style.display = "none";
+        if (success) {
+          success.classList.add("is-shown");
+          success.scrollIntoView({ behavior: REDUCED ? "auto" : "smooth", block: "start" });
+          success.focus?.();
+        }
+        return;
+      }
+      const reason = (data && data.message) ? data.message : `HTTP ${res.status}`;
+      console.warn("Form submit failed:", reason, data);
+      showError(`Couldn't send your message: ${reason}. Please try again or DM us on LinkedIn.`);
+    } catch (err) {
+      console.warn("Form submit network error:", err);
+      showError("Network error — please check your connection and try again, or DM us on LinkedIn.");
     }
   });
 }
