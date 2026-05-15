@@ -300,9 +300,10 @@ function initContactForm() {
       form.reportValidity();
       return;
     }
-    // Cloudflare Turnstile token check (if widget is on the page)
-    if (form.querySelector(".cf-turnstile")) {
-      const token = form.querySelector('input[name="cf-turnstile-response"]')?.value;
+    // hCaptcha token check (if widget is on the page)
+    if (form.querySelector(".h-captcha")) {
+      const token = form.querySelector('textarea[name="h-captcha-response"]')?.value
+                 || form.querySelector('input[name="h-captcha-response"]')?.value;
       if (!token) {
         let err = form.querySelector(".contact-form__error");
         if (!err) {
@@ -344,8 +345,8 @@ function initContactForm() {
     } catch (err) {
       submitBtn.disabled = false;
       submitBtn.textContent = originalLabel;
-      // Reset Turnstile so user can re-attempt
-      if (window.turnstile) window.turnstile.reset();
+      // Reset hCaptcha so user can re-attempt
+      if (window.hcaptcha) window.hcaptcha.reset();
       // Inline error
       let errEl = form.querySelector(".contact-form__error");
       if (!errEl) {

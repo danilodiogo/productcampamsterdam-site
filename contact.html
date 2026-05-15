@@ -10,11 +10,11 @@
   <link rel="apple-touch-icon" href="assets/brand/logo-icon-256.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="assets/css/reset.css?v=20260511204437">
-  <link rel="stylesheet" href="assets/css/tokens.css?v=20260511204437">
-  <link rel="stylesheet" href="assets/css/styles.css?v=20260511204437">
-  <!-- Cloudflare Turnstile (anti-spam) -->
-  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+  <link rel="stylesheet" href="assets/css/reset.css?v=20260515104621">
+  <link rel="stylesheet" href="assets/css/tokens.css?v=20260515104621">
+  <link rel="stylesheet" href="assets/css/styles.css?v=20260515104621">
+  <!-- hCaptcha (anti-spam) -->
+  <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
 </head>
 <body>
   <!-- NAV (sync across pages) -->
@@ -126,11 +126,10 @@
             </label>
           </div>
 
-          <!-- Cloudflare Turnstile widget. Token submits as `cf-turnstile-response`,
-               which Web3Forms validates server-side using the secret key configured
-               in your Web3Forms dashboard. Site key is injected from OpenBao via
-               scripts/inject_turnstile_key.py. -->
-          <div class="cf-turnstile" data-sitekey="0x4AAAAAADNYDFnq6i9giXlB" data-theme="light" data-size="flexible"></div>
+          <!-- hCaptcha widget. Web3Forms free tier requires their shared site key
+               below; Web3Forms validates the `h-captcha-response` token server-side
+               with no further config. Enable hCaptcha in app.web3forms.com → your form. -->
+          <div class="h-captcha" data-sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2" data-captcha="true" data-theme="light"></div>
 
           <div class="contact-form__actions">
             <button type="submit" class="btn btn--primary btn--lg">Send it</button>
@@ -196,6 +195,6 @@
     </div>
   </footer>
 
-  <script type="module" src="assets/js/main.js?v=20260511204437"></script>
+  <script type="module" src="assets/js/main.js?v=20260515104621"></script>
 </body>
 </html>
