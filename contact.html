@@ -13,8 +13,6 @@
   <link rel="stylesheet" href="assets/css/reset.css?v=20260515104621">
   <link rel="stylesheet" href="assets/css/tokens.css?v=20260515104621">
   <link rel="stylesheet" href="assets/css/styles.css?v=20260515104621">
-  <!-- hCaptcha (anti-spam) -->
-  <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
 </head>
 <body>
   <!-- NAV (sync across pages) -->
@@ -126,10 +124,11 @@
             </label>
           </div>
 
-          <!-- hCaptcha widget. Web3Forms free tier requires their shared site key
-               below; Web3Forms validates the `h-captcha-response` token server-side
-               with no further config. Enable hCaptcha in app.web3forms.com → your form. -->
-          <div class="h-captcha" data-sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2" data-captcha="true" data-theme="light"></div>
+          <!-- hCaptcha widget — zero-config: the Web3Forms client SDK (loaded
+               before </body>) injects their shared sitekey at runtime and loads
+               hCaptcha's API. data-captcha="true" is the trigger. Enable
+               hCaptcha in app.web3forms.com → your form's Settings. -->
+          <div class="h-captcha" data-captcha="true"></div>
 
           <div class="contact-form__actions">
             <button type="submit" class="btn btn--primary btn--lg">Send it</button>
