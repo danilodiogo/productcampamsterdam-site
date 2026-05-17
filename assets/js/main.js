@@ -117,8 +117,9 @@ function initSectionBgGearParallax() {
     const vh = window.innerHeight;
     sections.forEach(sec => {
       const r = sec.getBoundingClientRect();
-      // p = 0 when section top enters viewport bottom; p = 1 when section bottom exits viewport top
-      const p = Math.min(1, Math.max(0, (vh - r.top) / (vh + r.height)));
+      // p = 0 when section top enters viewport bottom; p = 1 when section CENTER hits viewport center.
+      // After that, gear stays at resting position (clamped).
+      const p = Math.min(1, Math.max(0, (vh - r.top) / (vh / 2 + r.height / 2)));
       sec.style.setProperty("--gear-x", `${-(1 - p) * sec.clientWidth}px`);
       sec.style.setProperty("--gear-rot", `${p * 360}deg`);
     });

@@ -13,6 +13,7 @@ Icon
 # Local dev / preview
 node_modules/
 .cache/
+.claude/
 
 # Internal-only files we don't want shipping (see _includes-nav.html for nav source-of-truth pattern)
 _includes-nav.html
