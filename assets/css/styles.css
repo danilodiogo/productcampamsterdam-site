@@ -196,10 +196,14 @@ body.nav-open .nav-toggle span::after { transform: rotate(-45deg); top: 0; }
 @media (prefers-reduced-motion: reduce) { .feature-row:hover .feature-row__icon svg { transform: none; } }
 
 /* ---------- DECORATIVE SECTION WATERMARK ---------- */
+/* Gear sits at bottom-right resting position; JS drives --gear-x (px) from
+   off-screen-left to 0 and --gear-rot (deg) from 0 to one full turn across
+   the section's scroll progress. prefers-reduced-motion users get the static
+   resting position with no transform applied. */
 .section--bg { position: relative; overflow: hidden; }
-.section--bg::after { content: ""; position: absolute; right: -100px; bottom: -100px; width: 360px; height: 360px; background: url(../brand/logo-icon-256.png) center/contain no-repeat; opacity: 0.04; pointer-events: none; z-index: 0; }
-@media (prefers-reduced-motion: no-preference) {
-  .section--bg::after { animation: spin 240s linear infinite; }
+.section--bg::after { content: ""; position: absolute; right: -100px; bottom: -100px; width: 360px; height: 360px; background: url(../brand/logo-icon-256.png) center/contain no-repeat; opacity: 0.04; pointer-events: none; z-index: 0; transform: translateX(var(--gear-x, 0)) rotate(var(--gear-rot, 0deg)); will-change: transform; }
+@media (prefers-reduced-motion: reduce) {
+  .section--bg::after { transform: none; }
 }
 .section--bg > .container { position: relative; z-index: 1; }
 
@@ -250,14 +254,26 @@ body.nav-open .nav-toggle span::after { transform: rotate(-45deg); top: 0; }
 @media (prefers-reduced-motion: reduce) { .card__social a:hover { transform: none; } }
 @media (prefers-reduced-motion: reduce) { .card:hover { transform: none; } .card--media:hover > img { transform: none; } }
 
-/* Persona card — equal-height cells with consistent vertical rhythm */
-.persona { display: flex; flex-direction: column; gap: var(--s-3); align-items: flex-start; padding: var(--s-5); border-radius: var(--radius-lg); background: var(--white); border: 1px solid var(--border); height: 100%; transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out); }
-.persona:hover { transform: translateY(-4px); box-shadow: var(--elev-2); border-color: var(--text-link); }
+/* Persona card — equal-height cells with consistent vertical rhythm.
+   Sticky-note treatment: per-card tilt, warm paper tint, snap-in via the
+   reveal-stagger pipeline with a slight overshoot for tactile feel. */
+.persona { display: flex; flex-direction: column; gap: var(--s-3); align-items: flex-start; padding: var(--s-5); border-radius: var(--radius-lg); background: linear-gradient(180deg, #fffdf6 0%, var(--white) 100%); border: 1px solid var(--border); height: 100%; transform-origin: top center; transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out); }
+.persona:nth-child(1) { --tilt: -1.5deg; }
+.persona:nth-child(2) { --tilt: 1deg; }
+.persona:nth-child(3) { --tilt: -1deg; }
+.persona:nth-child(4) { --tilt: 1.5deg; }
+.persona:hover { transform: translateY(-4px) rotate(var(--tilt, 0deg)); box-shadow: var(--elev-2); border-color: var(--text-link); }
 .persona__icon { width: 64px; height: 64px; border-radius: var(--radius-md); background: var(--bg-muted); display: grid; place-items: center; flex: 0 0 auto; }
 .persona__icon img { width: 44px; height: 44px; }
 .persona h3 { font-size: 1.25rem; margin-top: var(--s-1); }
 .persona p { font-size: var(--fs-small); margin: 0; }
-@media (prefers-reduced-motion: reduce) { .persona:hover { transform: none; } }
+
+/* Sticky-note snap: bigger initial tilt + Y offset, springy ease, then rest at --tilt */
+[data-reveal-stagger] > .persona { transform: translateY(28px) rotate(calc(var(--tilt, 0deg) * 5)); transition: opacity var(--dur-slow) var(--ease-out), transform 520ms cubic-bezier(0.34, 1.56, 0.64, 1); }
+[data-reveal-stagger].is-visible > .persona { transform: rotate(var(--tilt, 0deg)); }
+@media (prefers-reduced-motion: reduce) {
+  .persona, .persona:hover, [data-reveal-stagger] > .persona, [data-reveal-stagger].is-visible > .persona { transform: none; }
+}
 
 /* Stat card — large display number (AAA-large 4.5:1 since clamp min ≥ 36px bold) */
 .stat { text-align: left; padding-top: var(--s-3); border-top: 3px solid var(--aaa-red); }

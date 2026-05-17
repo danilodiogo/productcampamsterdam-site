@@ -104,6 +104,31 @@ function initHeroSplit() {
   });
 }
 
+/* ===== Section--bg gear: slide left → right as the section scrolls past =====
+   Plain rAF-throttled scroll listener (no Motion One dep) — sets CSS vars on
+   each .section--bg; the ::after watermark gear reads --gear-x and --gear-rot. */
+function initSectionBgGearParallax() {
+  if (REDUCED) return;
+  const sections = document.querySelectorAll(".section--bg");
+  if (!sections.length) return;
+  let rafId = 0;
+  const update = () => {
+    rafId = 0;
+    const vh = window.innerHeight;
+    sections.forEach(sec => {
+      const r = sec.getBoundingClientRect();
+      // p = 0 when section top enters viewport bottom; p = 1 when section bottom exits viewport top
+      const p = Math.min(1, Math.max(0, (vh - r.top) / (vh + r.height)));
+      sec.style.setProperty("--gear-x", `${-(1 - p) * sec.clientWidth}px`);
+      sec.style.setProperty("--gear-rot", `${p * 360}deg`);
+    });
+  };
+  const onScroll = () => { if (!rafId) rafId = requestAnimationFrame(update); };
+  update();
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll);
+}
+
 /* ===== Hero parallax (subtle, 4%) ===== */
 async function initHeroParallax() {
   if (REDUCED) return;
@@ -379,6 +404,7 @@ function boot() {
   initLightbox();
   initEmailObfuscation();
   initContactForm();
+  initSectionBgGearParallax();
   initHeroParallax(); // async, non-blocking
 }
 
